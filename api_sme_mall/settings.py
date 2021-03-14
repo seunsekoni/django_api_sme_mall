@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 from pathlib import Path
 
 import environ
+from datetime import timedelta
 
 env = environ.Env(
     # set casting, default value
@@ -50,25 +51,48 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.sites',
 
-    'allauth',
-    'allauth.account',
-    'allauth.socialaccount',
-
     # local
     'authentication.apps.AuthenticationConfig',
+    'client_requests.apps.ClientRequestsConfig',
 
     # 3rd party
     'rest_framework',
+    'rest_framework_simplejwt.token_blacklist',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'dj_rest_auth',
+    'dj_rest_auth.registration',
 
 ]
 
 # rest framework configurations
 REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',
+    ],
     
     'DEFAULT_AUTHENTICATION_CLASSES': (
         
         'rest_framework_simplejwt.authentication.JWTAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
     )
+}
+
+# Simple JWT Configurations
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=5),
+    'REFRESH_TOKEN_LIFETIME': timedelta(weeks=1),
+    'ROTATE_REFRESH_TOKENS': True,
+    'BLACKLIST_AFTER_ROTATION': True
+}
+
+# DJ_REST_AUTH Configurations
+
+REST_AUTH_SERIALIZERS = {
+    'REGISTER_SERIALIZER': 'authentication.serializers.UserRegistrationSerializer',
+    'PASSWORD_RESET_SERIALIZER': 'authentication.serializers.CustomPasswordResetSerializer',
+    # 'PASSWORD_RESET_CONFIRM_SERIALIZER': 
 }
 
 MIDDLEWARE = [
@@ -95,7 +119,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
 
-                # all auth needs this fron django
+                # all auth needs this from django
                 'django.template.context_processors.request',
             ],
         },
@@ -159,3 +183,27 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+SITE_ID=env('SITE_ID')
+
+REST_USE_JWT = True
+
+JWT_AUTH_COOKIE = 'sme_mall'
+
+# Email setings
+EMAIL_HOST = env('EMAIL_HOST')
+
+MAIL_FROM_ADDRESS = env('MAIL_FROM_ADDRESS')
+
+EMAIL_PORT = env('EMAIL_PORT')
+
+EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
+
+EMAIL_HOST_USER = env('EMAIL_HOST_USER')
+
+# dj_rest_auth
+ACCOUNT_AUTHENTICATION_METHOD = 'username'
+# ACCOUNT_USERNAME_REQUIRED = False
+# ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_UNIQUE_EMAIL = True
+ACCOUNT_EMAIL_VERIFICATION = 'none'

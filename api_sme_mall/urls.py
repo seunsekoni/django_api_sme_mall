@@ -15,8 +15,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from authentication import views as auth_view
 
 urlpatterns = [
+    # add this so password reset will work for dj_rest_auth
+    path('', include('django.contrib.auth.urls')),
+
     path('auth/', include('authentication.urls')),
     path('admin/', admin.site.urls),
+    path('api/v1/browsable/', include('rest_framework.urls')),
+    path('mail/', include('dj_rest_auth.urls'))
 ]

@@ -1,0 +1,50 @@
+[
+    {
+        "model": "client_requests.category",
+        "pk" : 1,
+        "fields" : {
+            "title":  "Human Resources",
+            "description":  null
+        }
+    },
+    {   
+        "model": "client_requests.category",
+        "pk": 2,
+        "fields": {
+            "title": "Business Advisory",
+            "description": null
+        }
+    },
+    {   
+        "model": "client_requests.category",
+        "pk": 3,
+        "fields": {
+            "title": "Finance Accounting",
+            "description": "Financial accounting Model"
+        }
+    },
+    {   
+        "model": "client_requests.category",
+        "pk": 4,
+        "fields": {
+            "title": "Technology",
+            "description": "Technological things"
+        }
+    },
+    {   
+        "model": "client_requests.category",
+        "pk": 5,
+        "fields": {
+            "title": "Marketing & Branding",
+            "description": "Market Brands"
+        }
+    },
+    {   
+        "model": "client_requests.category",
+        "pk": 6,
+        "fields": {
+            "title": "Legal",
+            "description": "Legal things"
+        }
+    }
+]
