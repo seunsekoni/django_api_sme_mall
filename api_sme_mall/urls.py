@@ -20,6 +20,7 @@ from authentication import views as auth_view
 urlpatterns = [
     # add this so password reset will work for dj_rest_auth
     path('', include('django.contrib.auth.urls')),
+    path('api/v1/', include('client_requests.urls', namespace="client_requests")),
 
     path('auth/', include('authentication.urls')),
     path('admin/', admin.site.urls),

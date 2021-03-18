@@ -4,7 +4,9 @@
         "pk" : 1,
         "fields" : {
             "title":  "Human Resources",
-            "description":  null
+            "description":  null,
+            "created": "2021-03-15T01:41:28+00:00",
+            "updated": "2021-03-15T01:41:28+00:00"
         }
     },
     {   
@@ -12,7 +14,9 @@
         "pk": 2,
         "fields": {
             "title": "Business Advisory",
-            "description": null
+            "description": null,
+            "created": "2021-03-15T01:41:28+00:00",
+            "updated": "2021-03-15T01:41:28+00:00"
         }
     },
     {   
@@ -20,7 +24,9 @@
         "pk": 3,
         "fields": {
             "title": "Finance Accounting",
-            "description": "Financial accounting Model"
+            "description": "Financial accounting Model",
+            "created": "2021-03-15T01:41:28+00:00",
+            "updated": "2021-03-15T01:41:28+00:00"
         }
     },
     {   
@@ -28,7 +34,9 @@
         "pk": 4,
         "fields": {
             "title": "Technology",
-            "description": "Technological things"
+            "description": "Technological things",
+            "created": "2021-03-15T01:41:28+00:00",
+            "updated": "2021-03-15T01:41:28+00:00"
         }
     },
     {   
@@ -36,7 +44,9 @@
         "pk": 5,
         "fields": {
             "title": "Marketing & Branding",
-            "description": "Market Brands"
+            "description": "Market Brands",
+            "created": "2021-03-15T01:41:28+00:00",
+            "updated": "2021-03-15T01:41:28+00:00"
         }
     },
     {   
@@ -44,7 +54,9 @@
         "pk": 6,
         "fields": {
             "title": "Legal",
-            "description": "Legal things"
+            "description": "Legal things",
+            "created": "2021-03-15T01:41:28+00:00",
+            "updated": "2021-03-15T01:41:28+00:00"
         }
     }
 ]

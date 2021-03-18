@@ -1,0 +1,14 @@
+[
+    {
+        "model": "client_requests.commission",
+        "pk": 1,
+        "fields": {
+            "sme_percentage": 15,
+            "sp_percentage": 85,
+            "name": "Standard",
+            "description": "Standard percentage",
+            "created": "2021-03-15T01:41:28+00:00",
+            "updated": "2021-03-15T01:41:28+00:00"
+        }
+    }
+]

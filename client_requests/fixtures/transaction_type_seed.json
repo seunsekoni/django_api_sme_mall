@@ -1,0 +1,19 @@
+[
+    {
+        "model": "client_requests.transactiontype",
+        "pk": 1,
+        "fields": {
+            "name": "client_payment",
+            "description": "Client Payment after making a new order"
+        }
+    },
+    {
+        "model": "client_requests.transactiontype",
+        "pk": 2,
+        "fields": {
+            "name": "service_provider_payout",
+            "description": "Service Provider receives payment"
+            
+        }
+    }
+]

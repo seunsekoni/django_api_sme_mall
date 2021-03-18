@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 from pathlib import Path
 
+import os
+
 import environ
 from datetime import timedelta
 
@@ -38,6 +40,8 @@ SECRET_KEY = env('SECRET_KEY')
 DEBUG = env('DEBUG')
 
 ALLOWED_HOSTS = []
+
+AUTH_USER_MODEL = 'authentication.User'
 
 
 # Application definition
@@ -69,7 +73,8 @@ INSTALLED_APPS = [
 # rest framework configurations
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.IsAuthenticated',
+        # 'rest_framework.permissions.IsAuthenticated',
+        'client_requests.permissions.isAuthenticatedAndEmailVerified'
     ],
     
     'DEFAULT_AUTHENTICATION_CLASSES': (
@@ -81,7 +86,7 @@ REST_FRAMEWORK = {
 
 # Simple JWT Configurations
 SIMPLE_JWT = {
-    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=5),
+    'ACCESS_TOKEN_LIFETIME': timedelta(days=3),
     'REFRESH_TOKEN_LIFETIME': timedelta(weeks=1),
     'ROTATE_REFRESH_TOKENS': True,
     'BLACKLIST_AFTER_ROTATION': True
@@ -201,9 +206,13 @@ EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
 
 EMAIL_HOST_USER = env('EMAIL_HOST_USER')
 
-# dj_rest_auth
+EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
+
+# django alauth config
 ACCOUNT_AUTHENTICATION_METHOD = 'username'
 # ACCOUNT_USERNAME_REQUIRED = False
 # ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_UNIQUE_EMAIL = True
-ACCOUNT_EMAIL_VERIFICATION = 'none'
+ACCOUNT_EMAIL_VERIFICATION = 'optional'
+
+

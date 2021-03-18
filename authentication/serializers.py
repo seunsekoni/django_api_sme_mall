@@ -11,12 +11,13 @@ from rest_framework import serializers, validators
 from dj_rest_auth.registration.serializers import RegisterSerializer
 from .models import GENDER_SELECTION, Profile
 from django.contrib.auth.password_validation import validate_password
-from django.contrib.auth.models import User
+from django.contrib.auth import get_user_model
 from dj_rest_auth.serializers import PasswordResetSerializer, PasswordResetConfirmSerializer
 from allauth.account.forms import ResetPasswordForm
 from django.contrib.auth.forms import PasswordResetForm
 from django.utils.translation import gettext as _
 # from rest_framework_simplejwt.settings import api_settings
+User = get_user_model()
 
 class UserRegistrationSerializer(serializers.Serializer):
     first_name = serializers.CharField(max_length=30)
@@ -53,6 +54,10 @@ class UserRegistrationSerializer(serializers.Serializer):
             raise serializers.ValidationError({"password": "Password fields didn't match."})
 
         return attrs
+    
+    def validate_username(self, value):
+        if not value.isalnum():
+            raise serializers.ValidationError(_('The username should only contain alphanumeric characters'))
 
     # Define transaction.atomic to rollback the save operation in case of error
     @transaction.atomic

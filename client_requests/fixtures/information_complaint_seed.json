@@ -1,0 +1,18 @@
+[
+    {
+        "model": "client_requests.informationcomplaint",
+        "pk": 1,
+        "fields": {
+            "name": "information",
+            "description": "Add more information on a request"
+        }
+    },
+    {
+        "model": "client_requests.informationcomplaint",
+        "pk": 2,
+        "fields": {
+            "name": "complaint",
+            "description": "Make complaint on a request"
+        }
+    }
+]
